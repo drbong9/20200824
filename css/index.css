@@ -8,15 +8,18 @@ body {
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
+    padding-top: 7.5rem;
 }
 
 /********** header **********/
-.header{   
+.header{  
+    background-color: #fff; 
     padding: 0 5rem;
     font-family: 'Open Sans', sans-serif;
     font-size: 0.875rem;
     position: fixed;
     width: 100%;
+    top: 0;
     max-width: 1200px;
     z-index: 100;
 }
@@ -50,13 +53,13 @@ body {
 .header > .navi-pc > .navi:hover {
     color: #111;    
 }
-
+/********** mobile-wing **********/
 
 .navi-mobile {
     display: none;
     position: absolute;
     font-size: 1.25rem;
-    right: 2.5rem;
+    right: 5rem;
     top: 2.75rem;
     z-index: 2;
     cursor: pointer;
@@ -105,21 +108,71 @@ body {
     background-color: #f4f4f4;
 }
 
-/********** mobile-wing **********/
 
-
-/********** header **********/
-
-
-
-
+/* SASS SCSS LESS <- Webpack 필요 */
 /********** main-wrap **********/
+.main-wrap {
+    position: relative;
+}
+.main-wrap > .slides {
+    position: relative;
+}
+.main-wrap > .slides > .slide {
+    position: absolute;
+}
+.main-wrap .bt {
+    position: absolute;   
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: calc(3rem - 4px);
+    transition: all 0.5s;
+    opacity: 0;
+    z-index: 11;
+}
+.main-wrap .bt-prev {
+    left: 1.5rem;
+    cursor: pointer;
+}
+.main-wrap .bt-next {
+    right: 1.5rem;
+    cursor: pointer;
+}
+.main-wrap .pagers{
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s;
+    opacity: 0;
+    z-index: 11;    
+}
+.main-wrap .pager{
+    color: #fff;
+    cursor: pointer;
+}
+.main-wrap:hover .bt{
+    opacity: 1;
+}
+.main-wrap:hover .pagers{
+    opacity: 1;
+}
 
 
+/********** @media **********/
 
 @media screen and (max-width: 767px){
     .navi-mobile{display: block; top: 1.625rem;}
     .header > .navi-pc {display: none;}
     .header > .logo{width: 5rem;}
     .header {padding: 0 2.5rem;}
+    .wrapper {
+        padding-top: 5rem;
+    }
 }
