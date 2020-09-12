@@ -2,6 +2,7 @@
 
 
 /********** 전역변수 **********/
+var scTop = 0;
 var isWingShow = false;
 var mainNow = 0;
 var $mainSlide = $(".main-wrap .slide");
@@ -65,21 +66,36 @@ function onResize(){
         
     }
 }
+
+function onscroll(){
+    sctop = $(this).scrollTop();    
+    if(sctop > 200){
+        $('.header').css('background-color','beige');
+    }
+    else {
+        $('.header').css('background-color','white');
+    } 
+}
+
 function onPrev(){
     mainNow = (mainNow == 0) ? mainLast : mainNow - 1;
     mainAni();
 }
+
 function onNext(){
     mainNow = (mainNow == 3) ? 0 : mainNow + 1;
     mainAni();
 }
+
 function onPager(){
     mainNow = $(this).index();
     mainAni();
 }
+
 function onMainHover(){
     clearInterval(mainInterval);
 }
+
 function onMainLeave(){
     mainInterval = setInterval(onNext,mainGap);
 }
@@ -87,6 +103,8 @@ function onMainLeave(){
 /********** 이벤트등록 **********/
 $('.bt-wing').click(onWingClick);
 $(window).resize(onResize);
+$(window).scroll(onscroll);
+
 $('.main-wrap .bt-prev').click(onPrev);
 $('.main-wrap .bt-next').click(onNext);
 $('.main-wrap').hover(onMainHover,onMainLeave);
